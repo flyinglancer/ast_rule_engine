@@ -1,0 +1,35 @@
+OUTPUT FOR AUTO SCRIPT
+Testing create_rule...
+Response: {'id': 1, 'ast': '{"type": "operator", "value": "AND", "left": {"type": "operand", "value": "age > 30", "left": null, "right": null}, "right": {"type": "operand", "value": "department = 'Sales'", "left": null, "right": null}}'}
+
+Testing create_rule...
+Response: {'id': 2, 'ast': '{"type": "operator", "value": "OR", "left": {"type": "operand", "value": "salary > 50000", "left": null, "right": null}, "right": {"type": "operand", "value": "experience > 5", "left": null, "right": null}}'}
+
+Testing combine_rules...
+Response: {'id': 3, 'combined_ast': '{"type": "operator", "value": "AND", "left": {"type": "operator", "value": "AND", "left": {"type": "operand", "value": "age > 30", "left": null, "right": null}, "right": {"type": "operand", "value": "department = 'Sales'", "left": null, "right": null}}, "right": {"type": "operator", "value": "OR", "left": {"type": "operand", "value": "salary > 50000", "left": null, "right": null}, "right": {"type": "operand", "value": "experience > 5", "left": null, "right": null}}}'}
+
+Testing evaluate_rule...
+Response: {'result': True}
+
+Testing modify_rule...
+Response: {'message': 'Rule updated successfully'}
+=================================================================================
+
+SAMPLE DATA 
+
+RULE 1 : (age > 30 AND department = 'Sales')
+RULE 2 : (salary > 50000 OR experience > 5)
+
+COMBINE :  1,2
+
+MEGA RULE WILL BE CREATED ON ID: 3 SEQUENCE WISE 
+
+IN EVALUATE RULE ADD 3 AND IN DATA JSON ADD 
+{
+  "age": 35,
+  "department": "Sales",
+  "salary": 60000,
+  "experience": 6
+}
+
+AFTER CLICKING EVALUATE YOU WILL SEE A SUCCESS MESSAGE WITH "TRUE" PARAMS
